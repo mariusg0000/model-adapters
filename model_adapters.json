@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "revision": 2,
+  "providers": {
+    "openai-chatgpt-oauth": {
+      "auth_type": "oauth",
+      "default_protocol": "openai-responses",
+      "responses": {
+        "lite": false
+      },
+      "models": {
+        "gpt-6-astra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max"]
+        },
+        "gpt-5.6-sol": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "low", "medium", "high", "xhigh", "max"],
+          "responses": {
+            "lite": true
+          }
+        },
+        "gpt-5.6-terra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "low", "medium", "high", "xhigh", "max"],
+          "responses": {
+            "lite": true
+          }
+        },
+        "gpt-5.6-luna": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "low", "medium", "high", "xhigh", "max"],
+          "responses": {
+            "lite": true
+          }
+        },
+        "gpt-5.5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "low", "medium", "high", "xhigh"]
+        }
+      }
+    },
+    "opencode-go": {
+      "auth_type": "api_key",
+      "default_protocol": "openai-chat",
+      "openai_chat": {
+        "include_stream_usage": true,
+        "include_reasoning_content": true
+      },
+      "models": {
+        "grok-4.7": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "openai-responses-api"
+        },
+        "grok-4.6": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh"],
+          "protocol": "openai-responses-api"
+        },
+        "gpt-6-luna": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "openai-responses-api"
+        },
+        "gpt-5.6-luna": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "low", "medium", "high", "xhigh", "max"],
+          "protocol": "openai-responses-api"
+        },
+        "muse-spark-1.3-contributor": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["minimal", "low", "medium", "high", "xhigh"],
+          "protocol": "openai-responses-api"
+        },
+        "muse-spark-1.2-contributor": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["minimal", "low", "medium", "high", "xhigh"],
+          "protocol": "openai-responses-api"
+        },
+        "glm-5.3-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "max"]
+        },
+        "glm-5.3": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "max"]
+        },
+        "glm-5.2": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["high", "max"]
+        },
+        "glm-5.1": {
+          "tools": true,
+          "reasoning": true
+        },
+        "kimi-k3": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["max"]
+        },
+        "kimi-k2.7-code": {
+          "tools": true,
+          "reasoning": true
+        },
+        "kimi-k2.6": {
+          "tools": true,
+          "reasoning": true
+        },
+        "longcat-2.0": {
+          "tools": true,
+          "reasoning": true
+        },
+        "longcat-2.5-preview-free": {
+          "tools": true,
+          "reasoning": true
+        },
+        "deepseek-v4.1-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "max"]
+        },
+        "deepseek-v4-pro": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["high", "max"]
+        },
+        "deepseek-v4-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "max"]
+        },
+        "deepseek-v4-flash-vision-exp": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "max"]
+        },
+        "mimo-v2.5": {
+          "tools": true,
+          "reasoning": true
+        },
+        "mimo-v2.5-pro": {
+          "tools": true,
+          "reasoning": true
+        },
+        "mimo-v2.6-flash": {
+          "tools": true,
+          "reasoning": true
+        },
+        "mimo-v2.6-pro": {
+          "tools": true,
+          "reasoning": true
+        },
+        "minimax-m3": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {"max_tokens": 131072}
+        },
+        "minimax-m2.7": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {"max_tokens": 131072}
+        },
+        "qwen3.8-max": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {"max_tokens": 131072}
+        },
+        "qwen3.8-flash": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {"max_tokens": 131072}
+        },
+        "qwen3.7-plus": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {"max_tokens": 65536}
+        },
+        "claude-haiku-5-5": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {"max_tokens": 128000}
+        },
+        "space-bunny": {
+          "tools": true,
+          "reasoning": true
+        },
+        "hy4-preview": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "high"]
+        },
+        "hy3": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "low", "high"]
+        }
+      }
+    }
+  }
+}
