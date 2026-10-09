@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 2,
+  "revision": 3,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -125,6 +125,10 @@
         },
         "longcat-2.5-preview-free": {
           "tools": true,
+          "reasoning": true
+        },
+        "step-5-preview-free": {
+          "tools": false,
           "reasoning": true
         },
         "deepseek-v4.1-flash": {
