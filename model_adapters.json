@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 3,
+  "revision": 4,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -128,7 +128,7 @@
           "reasoning": true
         },
         "step-5-preview-free": {
-          "tools": false,
+          "tools": true,
           "reasoning": true
         },
         "deepseek-v4.1-flash": {
