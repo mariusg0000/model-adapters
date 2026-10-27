@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 4,
+  "revision": 5,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -200,6 +200,7 @@
         "claude-haiku-5-5": {
           "tools": true,
           "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max"],
           "protocol": "anthropic-messages",
           "anthropic": {"max_tokens": 128000}
         },
