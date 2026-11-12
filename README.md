@@ -29,12 +29,12 @@ Raw URL (default for both applications):
 - `google-generate-content` is the native Gemini `generateContent` API (opencode serves it at a
   different endpoint than its OpenAI-compatible gateway; the consumer configures that endpoint).
 - No endpoint or credential field exists on purpose: the catalog can never redirect requests.
-- Increase `revision` on every content change. A breaking schema change bumps `schema_version`.
+- `revision` increases on every content change (the generator does it). A breaking schema change bumps
+  `schema_version`.
 
 ## Consumers
 
 Model data is added or changed only here; consumers keep no model facts of their own.
-
 
 - BlazeAI: all fields (does not support `google-generate-content` yet).
 - FluxAI hub: `default_protocol`, model `protocol`, `anthropic.max_tokens`, `tools`, `reasoning`,
@@ -44,9 +44,28 @@ Model data is added or changed only here; consumers keep no model facts of their
   `google-generate-content`→`google`. Unknown fields are ignored; a model with an unknown protocol
   is skipped.
 
-## Publishing
+## Generation
+
+`model_adapters.json` is generated; never edit it by hand.
+
+- `scripts/generate.py` takes the models of each provider from [models.dev](https://models.dev)
+  (`tool_call`, `reasoning`, the `effort` reasoning levels, the protocol from the model's SDK package,
+  `max_tokens` from `limit.output`), applies `overrides.json`, validates, and raises `revision` only
+  when the content changes. A model models.dev drops leaves the catalog.
+- `overrides.json` lists the providers and their order. A provider with a `models_dev` block takes all
+  models of that models.dev provider, or only the ids in `only`; one without it (Codex OAuth) is
+  written by hand. Provider fields are copied as written; an override model is merged field by field
+  over the generated one (override wins) or added as written when models.dev lacks it.
+- A GitHub Action (`.github/workflows/generate.yml`) runs the tests and the generator daily, on manual
+  dispatch, and on every push to `main`, and commits the catalog when it changed.
+
+## Changing models
+
+Corrections, live-tested levels, consumer options, and models models.dev lacks go in `overrides.json`:
 
 ```
-python3 scripts/validate.py model_adapters.json   # must print "ok"
+git pull                                      # the Action commits the catalog too
+# edit overrides.json
+python3 scripts/generate.py                   # regenerates and validates model_adapters.json
 git commit -am "..." && git push
 ```
