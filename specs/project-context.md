@@ -1,6 +1,7 @@
 # Project: model-adapters
 
 Project Status: development
+Versioning: none
 
 ## Project and User Directives and Rules (Mandatory)
 
