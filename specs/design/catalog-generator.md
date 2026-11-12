@@ -22,7 +22,7 @@ small layer (live-tested corrections, providers absent from models.dev, consumer
 
 ## Requirements
 
-### [ ] Generation from models.dev
+### [X] Generation from models.dev
 
 **Description:**
 - Inputs: `https://models.dev/api.json` (or a local copy given on the command line), `overrides.json`,
@@ -53,7 +53,9 @@ uses with the same facts (including the live-tested `max` level of `gemini-4-arg
 Codex models and `~typesafe/jev-latest`), validates `ok`, and a second run with the same input changes
 nothing.
 
-### [ ] Daily GitHub Action
+**Implemented:** [catalog-generator.md](../implemented/catalog-generator.md).
+
+### [X] Daily GitHub Action
 
 **Description:** a workflow runs on a daily schedule, on manual dispatch, and on push to `main`: it runs
 the generator tests, generates, validates, and commits and pushes `model_adapters.json` only when it
@@ -64,8 +66,12 @@ changed.
 **Rationale:** keeps the catalog current without manual work, regenerates after a pushed overrides change,
 and is the CI the project lacked.
 
-### [ ] Editing procedure
+**Implemented:** [catalog-generator.md](../implemented/catalog-generator.md).
+
+### [X] Editing procedure
 
 **Description:** `model_adapters.json` is never edited by hand: a correction or a hand-kept model goes in
 `overrides.json`, then `scripts/generate.py` runs before commit and push. README and project context state
 it.
+
+**Implemented:** [catalog-generator.md](../implemented/catalog-generator.md).
