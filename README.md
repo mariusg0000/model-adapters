@@ -33,7 +33,7 @@ Raw URL (default for both applications):
 - BlazeAI: all fields.
 - FluxAI hub: `default_protocol`, model `protocol`, `anthropic.max_tokens`, `tools`, `reasoning`
   (prefill of the console source row). Maps `openai-chat`→`chat`, `openai-responses-api`→`responses`,
-  `anthropic-messages`→`anthropic`; OAuth/Codex entries are skipped. Unknown fields are ignored.
+  `anthropic-messages`→`anthropic`, `openai-responses`→`responses` (Codex OAuth). Unknown fields are ignored.
 
 ## Publishing
 
