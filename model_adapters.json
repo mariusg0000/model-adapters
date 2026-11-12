@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 6,
+  "revision": 7,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -218,6 +218,12 @@
           "reasoning_levels": ["low", "medium", "high", "xhigh", "max"],
           "protocol": "anthropic-messages",
           "anthropic": {"max_tokens": 128000}
+        },
+        "gemini-4-argon": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "max"],
+          "protocol": "google-generate-content"
         },
         "space-bunny": {
           "tools": true,

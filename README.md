@@ -11,29 +11,34 @@ Raw URL (default for both applications):
 ```
 { "schema_version": 1, "revision": <int>, "providers": { "<provider>": {
     "auth_type": "api_key" | "oauth",
-    "default_protocol": "openai-chat" | "openai-responses" | "openai-responses-api" | "anthropic-messages",
+    "default_protocol": "openai-chat" | "openai-responses" | "openai-responses-api" | "anthropic-messages"
+                        | "google-generate-content",
     "openai_chat": {"include_stream_usage": bool, "include_reasoning_content": bool},   // optional
     "responses":   {"lite": bool},                                                     // optional
     "anthropic":   {"max_tokens": <positive int>},                                     // optional
     "models": { "<exact model id>": {
         "tools": bool, "reasoning": bool,
         "reasoning_levels": ["low", ...],        // optional, needs reasoning=true
-        "protocol": "<one of the four>",         // optional override
+        "protocol": "<one of the five>",         // optional override
         "openai_chat" / "responses" / "anthropic": { ... }   // optional overrides
     } } } } }
 ```
 
 - `anthropic-messages` needs `anthropic.max_tokens` (model or provider) and `auth_type: api_key`.
 - `openai-responses` is the Codex OAuth dialect; `openai-responses-api` is the standard API-key one.
+- `google-generate-content` is the native Gemini `generateContent` API (opencode serves it at a
+  different endpoint than its OpenAI-compatible gateway; the consumer configures that endpoint).
 - No endpoint or credential field exists on purpose: the catalog can never redirect requests.
 - Increase `revision` on every content change. A breaking schema change bumps `schema_version`.
 
 ## Consumers
 
-- BlazeAI: all fields.
-- FluxAI hub: `default_protocol`, model `protocol`, `anthropic.max_tokens`, `tools`, `reasoning`
-  (prefill of the console source row). Maps `openai-chat`→`chat`, `openai-responses-api`→`responses`,
-  `anthropic-messages`→`anthropic`, `openai-responses`→`responses` (Codex OAuth). Unknown fields are ignored.
+- BlazeAI: all fields (does not support `google-generate-content` yet).
+- FluxAI hub: `default_protocol`, model `protocol`, `anthropic.max_tokens`, `tools`, `reasoning`,
+  `reasoning_levels` (prefill of the console source row). Maps `openai-chat`→`chat`, `openai-responses-api`→`responses`,
+  `anthropic-messages`→`anthropic`, `openai-responses`→`responses` (Codex OAuth),
+  `google-generate-content`→`google`. Unknown fields are ignored; a model with an unknown protocol
+  is skipped.
 
 ## Publishing
 

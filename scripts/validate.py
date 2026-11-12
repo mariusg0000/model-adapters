@@ -9,7 +9,8 @@ import json
 import re
 import sys
 
-PROTOCOLS = {"openai-chat", "openai-responses", "openai-responses-api", "anthropic-messages"}
+PROTOCOLS = {"openai-chat", "openai-responses", "openai-responses-api", "anthropic-messages",
+             "google-generate-content"}
 AUTH = {"api_key", "oauth"}
 LEVEL = re.compile(r"^[a-z0-9_-]+$")
 MAX_LEVELS = 16
