@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 7,
+  "revision": 8,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -238,6 +238,26 @@
           "tools": true,
           "reasoning": true,
           "reasoning_levels": ["none", "low", "high"]
+        },
+        "beam-free": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max"]
+        }
+      }
+    },
+    "openrouter": {
+      "auth_type": "api_key",
+      "default_protocol": "openai-chat",
+      "models": {
+        "~typesafe/jev-latest": {
+          "tools": true,
+          "reasoning": true
+        },
+        "google/gemini-nano-banana-2.1": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["none", "minimal", "high"]
         }
       }
     }

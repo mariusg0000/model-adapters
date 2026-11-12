@@ -33,9 +33,13 @@ Raw URL (default for both applications):
 
 ## Consumers
 
+Model data is added or changed only here; consumers keep no model facts of their own.
+
+
 - BlazeAI: all fields (does not support `google-generate-content` yet).
 - FluxAI hub: `default_protocol`, model `protocol`, `anthropic.max_tokens`, `tools`, `reasoning`,
-  `reasoning_levels` (prefill of the console source row). Maps `openai-chat`→`chat`, `openai-responses-api`→`responses`,
+  `reasoning_levels`, `responses.lite`; a hub source names only a catalog model and a level, the
+  relay resolves the rest from here. Maps `openai-chat`→`chat`, `openai-responses-api`→`responses`,
   `anthropic-messages`→`anthropic`, `openai-responses`→`responses` (Codex OAuth),
   `google-generate-content`→`google`. Unknown fields are ignored; a model with an unknown protocol
   is skipped.
