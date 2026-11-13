@@ -87,6 +87,18 @@
           "reasoning": true
         }
       }
+    },
+    "deepseek": {
+      "models_dev": {
+        "provider": "deepseek",
+        "only": ["deepseek-flash", "deepseek-v4-pro"]
+      },
+      "auth_type": "api_key",
+      "default_protocol": "openai-chat",
+      "openai_chat": {
+        "include_stream_usage": true,
+        "include_reasoning_content": true
+      }
     }
   }
 }

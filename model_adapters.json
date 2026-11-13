@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 9,
+  "revision": 10,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -493,6 +493,34 @@
         "~typesafe/jev-latest": {
           "tools": true,
           "reasoning": true
+        }
+      }
+    },
+    "deepseek": {
+      "auth_type": "api_key",
+      "default_protocol": "openai-chat",
+      "openai_chat": {
+        "include_stream_usage": true,
+        "include_reasoning_content": true
+      },
+      "models": {
+        "deepseek-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "deepseek-v4-pro": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
         }
       }
     }
