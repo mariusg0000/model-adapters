@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 10,
+  "revision": 11,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -290,6 +290,14 @@
             "high"
           ]
         },
+        "hy4-flash-free": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "none",
+            "high"
+          ]
+        },
         "hy4-preview": {
           "tools": true,
           "reasoning": true,
@@ -444,6 +452,19 @@
           "protocol": "anthropic-messages",
           "anthropic": {
             "max_tokens": 131072
+          }
+        },
+        "qwen4-max": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "xhigh"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 262144
           }
         },
         "space-bunny": {
