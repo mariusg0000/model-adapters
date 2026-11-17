@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 12,
+  "revision": 13,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -565,6 +565,10 @@
           "tools": true,
           "reasoning": true
         },
+        "Qwen/Qwen3.6-Max-Preview": {
+          "tools": true,
+          "reasoning": true
+        },
         "Qwen/Qwen3.6-Plus": {
           "tools": true,
           "reasoning": true
@@ -630,6 +634,10 @@
             "xhigh"
           ]
         },
+        "Qwen/Qwen4-Max": {
+          "tools": true,
+          "reasoning": true
+        },
         "claude-fable-5": {
           "tools": true,
           "reasoning": true,
@@ -646,6 +654,21 @@
           }
         },
         "claude-fable-5-1": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-fable-5-2": {
           "tools": true,
           "reasoning": true,
           "reasoning_levels": [
@@ -841,6 +864,10 @@
             "max"
           ]
         },
+        "deepseek/deepseek-v4.1-flash-ultrafast": {
+          "tools": true,
+          "reasoning": true
+        },
         "google/gemini-3.1-flash-lite": {
           "tools": true,
           "reasoning": true,
@@ -903,6 +930,10 @@
             "medium",
             "high"
           ]
+        },
+        "google/gemini-4-carbon": {
+          "tools": true,
+          "reasoning": true
         },
         "gpt-5.3-codex": {
           "tools": true,
@@ -1041,6 +1072,10 @@
             "high"
           ]
         },
+        "inclusionai/ling-3.1-flash-1019": {
+          "tools": true,
+          "reasoning": true
+        },
         "inclusionai/ling-3.1-flash:free": {
           "tools": true,
           "reasoning": true,
@@ -1051,6 +1086,10 @@
           ]
         },
         "meituan/LongCat-2.0": {
+          "tools": true,
+          "reasoning": true
+        },
+        "meta/muse-ember": {
           "tools": true,
           "reasoning": true
         },
@@ -1194,6 +1233,10 @@
           "tools": true,
           "reasoning": true
         },
+        "recursive/flint-v1.0:free": {
+          "tools": true,
+          "reasoning": true
+        },
         "reflection/beam:free": {
           "tools": true,
           "reasoning": true,
@@ -1257,6 +1300,10 @@
             "high"
           ]
         },
+        "tencent/hy4-flash": {
+          "tools": true,
+          "reasoning": true
+        },
         "tencent/hy4-preview": {
           "tools": true,
           "reasoning": true,
@@ -1273,6 +1320,10 @@
             "high",
             "max"
           ]
+        },
+        "thinkingmachines/inkling-2-small:free": {
+          "tools": true,
+          "reasoning": true
         },
         "thinkingmachines/inkling-small": {
           "tools": true,
@@ -1344,6 +1395,10 @@
           ]
         },
         "zai-org/GLM-5": {
+          "tools": true,
+          "reasoning": true
+        },
+        "zai-org/GLM-5.1": {
           "tools": true,
           "reasoning": true
         },
