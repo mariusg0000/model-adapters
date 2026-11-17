@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 13,
+  "revision": 14,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -636,7 +636,12 @@
         },
         "Qwen/Qwen4-Max": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "xhigh"
+          ]
         },
         "claude-fable-5": {
           "tools": true,
@@ -866,7 +871,12 @@
         },
         "deepseek/deepseek-v4.1-flash-ultrafast": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
         },
         "google/gemini-3.1-flash-lite": {
           "tools": true,
@@ -933,7 +943,12 @@
         },
         "google/gemini-4-carbon": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
         },
         "gpt-5.3-codex": {
           "tools": true,
@@ -1074,7 +1089,12 @@
         },
         "inclusionai/ling-3.1-flash-1019": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
         },
         "inclusionai/ling-3.1-flash:free": {
           "tools": true,
@@ -1091,7 +1111,14 @@
         },
         "meta/muse-ember": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
         },
         "meta/muse-spark-1.1": {
           "tools": true,
@@ -1235,7 +1262,12 @@
         },
         "recursive/flint-v1.0:free": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
         },
         "reflection/beam:free": {
           "tools": true,
@@ -1302,7 +1334,10 @@
         },
         "tencent/hy4-flash": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "high"
+          ]
         },
         "tencent/hy4-preview": {
           "tools": true,
@@ -1323,7 +1358,13 @@
         },
         "thinkingmachines/inkling-2-small:free": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "max"
+          ]
         },
         "thinkingmachines/inkling-small": {
           "tools": true,

@@ -126,35 +126,43 @@
         },
         "Qwen/Qwen4-Max": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "xhigh"]
         },
         "deepseek/deepseek-v4.1-flash-ultrafast": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "high", "max"]
         },
         "google/gemini-4-carbon": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high"]
         },
         "inclusionai/ling-3.1-flash-1019": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high"]
         },
         "meta/muse-ember": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max"]
         },
         "recursive/flint-v1.0:free": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high"]
         },
         "tencent/hy4-flash": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["high"]
         },
         "thinkingmachines/inkling-2-small:free": {
           "tools": true,
-          "reasoning": true
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "max"]
         },
         "zai-org/GLM-5.1": {
           "tools": true,
