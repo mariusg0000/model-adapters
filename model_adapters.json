@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 11,
+  "revision": 12,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -535,6 +535,835 @@
           ]
         },
         "deepseek-v4-pro": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        }
+      }
+    },
+    "commandcode": {
+      "auth_type": "api_key",
+      "default_protocol": "openai-chat",
+      "openai_chat": {
+        "include_stream_usage": true,
+        "include_reasoning_content": true
+      },
+      "models": {
+        "MiniMaxAI/MiniMax-M2.5": {
+          "tools": true,
+          "reasoning": true
+        },
+        "MiniMaxAI/MiniMax-M2.7": {
+          "tools": true,
+          "reasoning": true
+        },
+        "MiniMaxAI/MiniMax-M3": {
+          "tools": true,
+          "reasoning": true
+        },
+        "Qwen/Qwen3.6-Plus": {
+          "tools": true,
+          "reasoning": true
+        },
+        "Qwen/Qwen3.7-Flash": {
+          "tools": true,
+          "reasoning": true
+        },
+        "Qwen/Qwen3.7-Max": {
+          "tools": true,
+          "reasoning": true
+        },
+        "Qwen/Qwen3.7-Plus": {
+          "tools": true,
+          "reasoning": true
+        },
+        "Qwen/Qwen3.8-27B": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "xhigh"
+          ]
+        },
+        "Qwen/Qwen3.8-Flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "xhigh"
+          ]
+        },
+        "Qwen/Qwen3.8-Max": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "xhigh"
+          ]
+        },
+        "Qwen/Qwen3.8-Max-0902": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "xhigh"
+          ]
+        },
+        "Qwen/Qwen3.8-Max-Prime": {
+          "tools": true,
+          "reasoning": true
+        },
+        "Qwen/Qwen3.8-Omni-Flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "xhigh"
+          ]
+        },
+        "claude-fable-5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-fable-5-1": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-haiku-4-5-20251001": {
+          "tools": true,
+          "reasoning": true,
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 64000
+          }
+        },
+        "claude-haiku-5-5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-opus-4-7": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-opus-4-8": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-opus-5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-opus-5-5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-sonnet-4-6": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 64000
+          }
+        },
+        "claude-sonnet-5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "claude-sonnet-5-5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "anthropic-messages",
+          "anthropic": {
+            "max_tokens": 128000
+          }
+        },
+        "deepseek/deepseek-v4-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "deepseek/deepseek-v4-flash-fast": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "deepseek/deepseek-v4-flash-vision-exp": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "deepseek/deepseek-v4-pro": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "deepseek/deepseek-v4.1-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "deepseek/deepseek-v4.1-flash-fast": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "google/gemini-3.1-flash-lite": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "google/gemini-3.5-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "google/gemini-3.5-flash-lite": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "google/gemini-3.6-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "google/gemini-3.7-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "google/gemini-3.8-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "google/gemini-4-argon": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "gpt-5.3-codex": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "gpt-5.4": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "gpt-5.4-mini": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "gpt-5.5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "gpt-5.6-luna": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-5.6-sol": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-5.6-terra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6-astra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6-luna": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6-sol": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6.1-sol": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6.1-terra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "inclusionai/ling-3.1-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "inclusionai/ling-3.1-flash:free": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "meituan/LongCat-2.0": {
+          "tools": true,
+          "reasoning": true
+        },
+        "meta/muse-spark-1.1": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "meta/muse-spark-1.2": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "meta/muse-spark-1.2-contributor": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "meta/muse-spark-1.3": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "meta/muse-spark-1.3-contributor": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "meta/muse-spark-open": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "meta/muse-wonder-1.0": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "minimax/minimax-m3.1-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "mistral/mistral-large-4": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "high"
+          ]
+        },
+        "moonshotai/Kimi-K2.5": {
+          "tools": true,
+          "reasoning": true
+        },
+        "moonshotai/Kimi-K2.6": {
+          "tools": true,
+          "reasoning": true
+        },
+        "moonshotai/Kimi-K2.7-Code": {
+          "tools": true,
+          "reasoning": true
+        },
+        "moonshotai/Kimi-K2.7-Code-Highspeed": {
+          "tools": true,
+          "reasoning": true
+        },
+        "moonshotai/Kimi-K3": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "moonshotai/Kimi-K3.1-Pro": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "tools": true,
+          "reasoning": true
+        },
+        "nvidia/nemotron-3.5-super-vl": {
+          "tools": true,
+          "reasoning": true
+        },
+        "ornith/ornith-1.5-122b": {
+          "tools": true,
+          "reasoning": true
+        },
+        "poolside/laguna-s-2.1-free": {
+          "tools": true,
+          "reasoning": true
+        },
+        "reflection/beam:free": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "sakana/fugu-ultra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "high",
+            "xhigh"
+          ]
+        },
+        "stealth/glyph-cluster:free": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "stepfun/Step-3.5-Flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high"
+          ]
+        },
+        "stepfun/Step-3.7-Flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "stepfun/Step-5-Preview": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "tencent/hy3-paid": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high"
+          ]
+        },
+        "tencent/hy4-preview": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "high"
+          ]
+        },
+        "thinkingmachines/inkling": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "max"
+          ]
+        },
+        "thinkingmachines/inkling-small": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "max"
+          ]
+        },
+        "xai/grok-4.5": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "xai/grok-4.6": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "xai/grok-4.7": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
+        "xiaomi/mimo-v2.6-flash": {
+          "tools": true,
+          "reasoning": true
+        },
+        "xiaomi/mimo-v2.6-pro": {
+          "tools": true,
+          "reasoning": true
+        },
+        "xiaomi/mimo-v2.6-pro-ultraspeed": {
+          "tools": true,
+          "reasoning": true
+        },
+        "z-ai/glm-5.3-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "z-ai/glm-5.3-flashx": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high",
+            "max"
+          ]
+        },
+        "zai-org/GLM-5": {
+          "tools": true,
+          "reasoning": true
+        },
+        "zai-org/GLM-5.2": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "high",
+            "max"
+          ]
+        },
+        "zai-org/GLM-5.2-Fast": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "high",
+            "max"
+          ]
+        },
+        "zai-org/GLM-5.3": {
           "tools": true,
           "reasoning": true,
           "reasoning_levels": [
