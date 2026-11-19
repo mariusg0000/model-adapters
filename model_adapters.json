@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 15,
+  "revision": 16,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -19,51 +19,6 @@
             "high",
             "xhigh"
           ]
-        },
-        "gpt-5.6-luna": {
-          "tools": true,
-          "reasoning": true,
-          "reasoning_levels": [
-            "none",
-            "low",
-            "medium",
-            "high",
-            "xhigh",
-            "max"
-          ],
-          "responses": {
-            "lite": true
-          }
-        },
-        "gpt-5.6-sol": {
-          "tools": true,
-          "reasoning": true,
-          "reasoning_levels": [
-            "none",
-            "low",
-            "medium",
-            "high",
-            "xhigh",
-            "max"
-          ],
-          "responses": {
-            "lite": true
-          }
-        },
-        "gpt-5.6-terra": {
-          "tools": true,
-          "reasoning": true,
-          "reasoning_levels": [
-            "none",
-            "low",
-            "medium",
-            "high",
-            "xhigh",
-            "max"
-          ],
-          "responses": {
-            "lite": true
-          }
         },
         "gpt-6-astra": {
           "tools": true,
