@@ -7,7 +7,22 @@
         "lite": false
       },
       "models": {
+        "gpt-6.2-sol": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max", "ultra"]
+        },
+        "gpt-6.2-astra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max", "ultra"]
+        },
         "gpt-6-astra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max", "ultra"]
+        },
+        "gpt-6-sol": {
           "tools": true,
           "reasoning": true,
           "reasoning_levels": ["low", "medium", "high", "xhigh", "max", "ultra"]
