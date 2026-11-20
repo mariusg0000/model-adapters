@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 16,
+  "revision": 17,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -1457,6 +1457,44 @@
             "low",
             "high",
             "max"
+          ]
+        }
+      }
+    },
+    "kie": {
+      "auth_type": "api_key",
+      "default_protocol": "openai-chat",
+      "models": {
+        "deepseek-v4-1-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "none",
+            "minimal",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ],
+          "protocol": "openai-responses-api"
+        },
+        "gemini-4-argon": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "high"
+          ]
+        },
+        "gemini-4-hydrogen": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
           ]
         }
       }
