@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 17,
+  "revision": 18,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -1478,14 +1478,6 @@
             "max"
           ],
           "protocol": "openai-responses-api"
-        },
-        "gemini-4-argon": {
-          "tools": true,
-          "reasoning": true,
-          "reasoning_levels": [
-            "low",
-            "high"
-          ]
         },
         "gemini-4-hydrogen": {
           "tools": true,
