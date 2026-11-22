@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 19,
+  "revision": 20,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -1529,6 +1529,25 @@
         "google-generate-content": "https://generativelanguage.googleapis.com/v1beta"
       },
       "models": {
+        "gemini-3.8-flash": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "gemini-4-hydrogen": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        },
         "gemma-4-26b-a4b-it": {
           "tools": true,
           "reasoning": true
