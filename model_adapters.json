@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 20,
+  "revision": 21,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -1529,6 +1529,16 @@
         "google-generate-content": "https://generativelanguage.googleapis.com/v1beta"
       },
       "models": {
+        "gemini-3.5-flash-lite": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "minimal",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
         "gemini-3.8-flash": {
           "tools": true,
           "reasoning": true,

@@ -211,7 +211,7 @@
     "google": {
       "models_dev": {
         "provider": "google",
-        "only": ["gemma-4-26b-a4b-it", "gemma-4-31b-it", "gemini-4-hydrogen", "gemini-3.8-flash"]
+        "only": ["gemma-4-26b-a4b-it", "gemma-4-31b-it", "gemini-4-hydrogen", "gemini-3.8-flash", "gemini-3.5-flash-lite"]
       },
       "auth_type": "api_key",
       "default_protocol": "google-generate-content",
