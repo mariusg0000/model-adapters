@@ -11,7 +11,7 @@ Versioning: none
 - This repository is the only place where model data is added or changed. FluxAI and BlazeAI
   never edit it and never keep their own model facts; a model change starts here.
 - A new protocol value needs support in the consumers first: both reject an unknown protocol.
-- No endpoint, URL, or credential fields in the catalog.
+- No credential fields in the catalog. Provider endpoints (per protocol, optional `{model}` placeholder), title and session header are hand-written in `overrides.json`.
 - Every content change increments `revision`; breaking schema changes bump `schema_version` and
   must be coordinated with both consumers.
 

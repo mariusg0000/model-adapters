@@ -43,7 +43,7 @@ consumers (FluxAI hub, BlazeAI) are unchanged; they read the catalog as before.
 ## Integration and Constraints
 
 - models.dev is untrusted input: the result must pass the strict validator before it is written, and
-  the schema has no endpoint or credential fields.
+  the schema has no credential fields; providers carry hand-written `title`, `endpoints`, and optional `session_header`.
 - OpenRouter is limited to the `only` list, so the large models.dev OpenRouter catalog does not enter.
 - Current hand-kept data: all Codex OAuth models; opencode-go provider options and the live-tested
   `max` level of `gemini-4-argon`; OpenRouter `~typesafe/jev-latest`.

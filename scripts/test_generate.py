@@ -130,6 +130,16 @@ class ProviderCopy(unittest.TestCase):
                          {"include_stream_usage": True, "include_reasoning_content": True})
         self.assertNotIn("models_dev", providers["p"])
 
+    def test_title_endpoints_session_header_copied_unchanged(self):
+        provider = {
+            "models_dev": {"provider": "src"}, "title": "P", "auth_type": "api_key",
+            "default_protocol": "openai-chat", "endpoints": {"openai-chat": "https://{model}.example.com/v1"},
+            "session_header": "x-session"}
+        providers = generate.build_providers({"providers": {"p": provider}}, {"src": {"models": {"a": mdev_model()}}})
+        self.assertEqual(providers["p"]["title"], "P")
+        self.assertEqual(providers["p"]["endpoints"], {"openai-chat": "https://{model}.example.com/v1"})
+        self.assertEqual(providers["p"]["session_header"], "x-session")
+
 
 class OverrideMerge(unittest.TestCase):
     def test_override_field_replaces_generated_and_other_fields_kept(self):
@@ -164,8 +174,10 @@ class OrderAndDeprecated(unittest.TestCase):
 
 FIXTURE_OVERRIDES = {"providers": {
     "src-provider": {
-        "models_dev": {"provider": "src"}, "auth_type": "api_key", "default_protocol": "openai-chat"},
+        "models_dev": {"provider": "src"}, "title": "Src", "auth_type": "api_key",
+        "default_protocol": "openai-chat", "endpoints": {"openai-chat": "https://src.example.com/v1"}},
     "hand-provider": {
+        "title": "Hand", "endpoints": {"openai-responses": "https://hand.example.com/v1"},
         "auth_type": "oauth", "default_protocol": "openai-responses", "responses": {"lite": False},
         "models": {"hand-model": {"tools": True, "reasoning": True, "reasoning_levels": ["low"]}}},
 }}
@@ -235,8 +247,9 @@ class Cli(unittest.TestCase):
 
     def test_validation_failure_exits_1_and_leaves_file_unchanged(self):
         self.write_json("overrides.json", {"providers": {
-            "src-provider": {"models_dev": {"provider": "src"}, "auth_type": "api_key",
+            "src-provider": {"models_dev": {"provider": "src"}, "title": "Src", "auth_type": "api_key",
                              "default_protocol": "openai-chat",
+                             "endpoints": {"openai-chat": "https://src.example.com/v1"},
                              "models": {"chat": {"reasoning_levels": ["Not Valid"]}}}}})
         before = self.read_bytes()
         result = self.run_generator(self.models_dev)
@@ -253,6 +266,70 @@ class Cli(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("unknown models.dev provider", result.stderr)
         self.assertEqual(self.read_bytes(), before)
+
+
+def catalog_with_provider(**changes):
+    # WHAT: one valid provider with title, endpoints, and session_header; changes replace or drop ("drop" = None) fields.
+    provider = {
+        "title": "P", "auth_type": "api_key", "default_protocol": "openai-chat",
+        "endpoints": {"openai-chat": "https://api.example.com/v1"},
+        "session_header": "x-session",
+        "models": {"m": {"tools": True, "reasoning": False}}}
+    for key, value in changes.items():
+        if value is None:
+            provider.pop(key, None)
+        else:
+            provider[key] = value
+    return {"schema_version": 1, "revision": 1, "providers": {"p": provider}}
+
+
+class ProviderFieldValidation(unittest.TestCase):
+    def test_valid_catalog_with_title_endpoints_session_header_passes(self):
+        self.assertEqual(validate.validate(catalog_with_provider()), [])
+
+    def test_missing_endpoint_for_default_protocol_is_error(self):
+        errors = validate.validate(catalog_with_provider(endpoints={"anthropic-messages": "https://a.example.com"}))
+        self.assertTrue(any("default_protocol" in e for e in errors), errors)
+
+    def test_missing_endpoint_for_model_override_protocol_is_error(self):
+        model = {"tools": True, "reasoning": False, "protocol": "anthropic-messages", "anthropic": {"max_tokens": 1000}}
+        catalog = catalog_with_provider()
+        catalog["providers"]["p"]["models"]["m"] = model
+        errors = validate.validate(catalog)
+        self.assertTrue(any("providers.p.models.m.protocol" in e for e in errors), errors)
+
+    def test_model_placeholder_template_passes(self):
+        catalog = catalog_with_provider(endpoints={"openai-chat": "https://api.kie.ai/{model}-openai/v1"})
+        self.assertEqual(validate.validate(catalog), [])
+
+    def test_bad_urls_are_errors(self):
+        bad = {
+            "http scheme": "http://api.example.com/v1",
+            "query": "https://api.example.com/v1?key=1",
+            "userinfo": "https://user:pw@api.example.com/v1",
+            "fragment": "https://api.example.com/v1#x",
+            "other placeholder": "https://api.example.com/{other}/v1",
+            "no host": "https:///v1",
+        }
+        for case, url in bad.items():
+            with self.subTest(case=case):
+                errors = validate.validate(catalog_with_provider(endpoints={"openai-chat": url}))
+                self.assertTrue(any("providers.p.endpoints.openai-chat" in e for e in errors), errors)
+
+    def test_unknown_endpoint_protocol_key_is_error(self):
+        endpoints = {"openai-chat": "https://api.example.com/v1", "bogus": "https://api.example.com/v1"}
+        errors = validate.validate(catalog_with_provider(endpoints=endpoints))
+        self.assertTrue(any("endpoints.bogus" in e for e in errors), errors)
+
+    def test_invalid_session_header_is_error(self):
+        for header in ("x session", "x:session", ""):
+            with self.subTest(header=header):
+                errors = validate.validate(catalog_with_provider(session_header=header))
+                self.assertTrue(any("session_header" in e for e in errors), errors)
+
+    def test_missing_title_is_error(self):
+        errors = validate.validate(catalog_with_provider(title=None))
+        self.assertTrue(any("providers.p.title" in e for e in errors), errors)
 
 
 if __name__ == "__main__":

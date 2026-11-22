@@ -13,6 +13,9 @@ Raw URL (default for both applications):
     "auth_type": "api_key" | "oauth",
     "default_protocol": "openai-chat" | "openai-responses" | "openai-responses-api" | "anthropic-messages"
                         | "google-generate-content",
+    "title": "<display name>",
+    "endpoints": { "<protocol>": "<https base URL, optional {model}>" },   // one per protocol the provider uses
+    "session_header": "<HTTP header name>",                              // optional
     "openai_chat": {"include_stream_usage": bool, "include_reasoning_content": bool},   // optional
     "responses":   {"lite": bool},                                                     // optional
     "anthropic":   {"max_tokens": <positive int>},                                     // optional
@@ -26,9 +29,8 @@ Raw URL (default for both applications):
 
 - `anthropic-messages` needs `anthropic.max_tokens` (model or provider) and `auth_type: api_key`.
 - `openai-responses` is the Codex OAuth dialect; `openai-responses-api` is the standard API-key one.
-- `google-generate-content` is the native Gemini `generateContent` API (opencode serves it at a
-  different endpoint than its OpenAI-compatible gateway; the consumer configures that endpoint).
-- No endpoint or credential field exists on purpose: the catalog can never redirect requests.
+- `google-generate-content` is the native Gemini `generateContent` API.
+- No credential field exists on purpose. Endpoints are published so consumers need no provider-specific URLs; a `{model}` in an endpoint is replaced by the model id.
 - `revision` increases on every content change (the generator does it). A breaking schema change bumps
   `schema_version`.
 
@@ -36,9 +38,9 @@ Raw URL (default for both applications):
 
 Model data is added or changed only here; consumers keep no model facts of their own.
 
-- BlazeAI: all fields (does not support `google-generate-content` yet).
+- BlazeAI: all fields (does not support `google-generate-content` yet); accepts and ignores `title`, `endpoints`, `session_header`.
 - FluxAI hub: `default_protocol`, model `protocol`, `anthropic.max_tokens`, `tools`, `reasoning`,
-  `reasoning_levels`, `responses.lite`; a hub source names only a catalog model and a level, the
+  `reasoning_levels`, `responses.lite`, `title`, `endpoints`, `session_header`; a hub source names only a catalog model and a level, the
   relay resolves the rest from here. Maps `openai-chat`→`chat`, `openai-responses-api`→`responses`,
   `anthropic-messages`→`anthropic`, `openai-responses`→`responses` (Codex OAuth),
   `google-generate-content`→`google`. Unknown fields are ignored; a model with an unknown protocol

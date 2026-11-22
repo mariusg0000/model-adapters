@@ -8,20 +8,75 @@ HOW:  Stdlib only. Unknown fields are rejected here (the publisher is strict); c
 import json
 import re
 import sys
+from urllib.parse import urlsplit
 
 PROTOCOLS = {"openai-chat", "openai-responses", "openai-responses-api", "anthropic-messages",
              "google-generate-content"}
 AUTH = {"api_key", "oauth"}
 LEVEL = re.compile(r"^[a-z0-9_-]+$")
 MAX_LEVELS = 16
+# RFC 7230 token characters (tchar); a header name is one or more of them.
+HEADER_TOKEN = re.compile(r"^[!#$%&'*+.^_`|~0-9A-Za-z-]+$")
+MODEL_PLACEHOLDER = "{model}"
+SAMPLE_MODEL_ID = "sample-model"
 
-PROVIDER_FIELDS = {"auth_type", "default_protocol", "openai_chat", "responses", "anthropic", "models"}
+PROVIDER_FIELDS = {"title", "auth_type", "default_protocol", "endpoints", "session_header",
+                   "openai_chat", "responses", "anthropic", "models"}
 MODEL_FIELDS = {"tools", "reasoning", "reasoning_levels", "protocol", "openai_chat", "responses", "anthropic"}
 CHAT_FIELDS = {"include_stream_usage", "include_reasoning_content"}
 
 
 def is_int(v):
     return isinstance(v, int) and not isinstance(v, bool)
+
+
+def check_url(where, url, errors):
+    # WHAT: an endpoint is an absolute https URL with no userinfo, query, or fragment; {model} is the only placeholder.
+    # HOW:  the placeholder is replaced by a sample id before parsing, so the URL is checked as it will be used.
+    if not isinstance(url, str):
+        errors.append(f"{where}: must be a string URL")
+        return
+    sample = url.replace(MODEL_PLACEHOLDER, SAMPLE_MODEL_ID)
+    if "{" in sample or "}" in sample:
+        errors.append(f"{where}: only the {MODEL_PLACEHOLDER} placeholder is allowed")
+        return
+    try:
+        parts = urlsplit(sample)
+        hostname = parts.hostname
+    except ValueError:
+        errors.append(f"{where}: invalid URL")
+        return
+    if parts.scheme != "https" or "://" not in sample:
+        errors.append(f"{where}: must be an absolute https:// URL")
+    elif not hostname:
+        errors.append(f"{where}: must have a host")
+    elif "@" in parts.netloc:
+        errors.append(f"{where}: must not contain userinfo")
+    elif "?" in sample:
+        errors.append(f"{where}: must not contain a query")
+    elif "#" in sample:
+        errors.append(f"{where}: must not contain a fragment")
+
+
+def check_provider_fields(where, provider, errors):
+    title = provider.get("title")
+    if not isinstance(title, str) or not title.strip():
+        errors.append(f"{where}.title: required non-empty string")
+    if "session_header" in provider:
+        header = provider["session_header"]
+        if not isinstance(header, str) or not HEADER_TOKEN.fullmatch(header):
+            errors.append(f"{where}.session_header: must be a non-empty HTTP token (RFC 7230 tchar)")
+    endpoints = provider.get("endpoints")
+    if not isinstance(endpoints, dict):
+        errors.append(f"{where}.endpoints: required object")
+        return
+    for key, url in endpoints.items():
+        if key not in PROTOCOLS:
+            errors.append(f"{where}.endpoints.{key}: unknown protocol, must be one of {sorted(PROTOCOLS)}")
+        else:
+            check_url(f"{where}.endpoints.{key}", url, errors)
+    if provider.get("default_protocol") in PROTOCOLS and provider["default_protocol"] not in endpoints:
+        errors.append(f"{where}.endpoints: no endpoint for default_protocol {provider['default_protocol']}")
 
 
 def check_block(where, block, allowed, errors, kind):
@@ -76,6 +131,9 @@ def check_model(where, name, model, provider, errors):
         check_levels(where, model, errors)
     if "protocol" in model and model["protocol"] not in PROTOCOLS:
         errors.append(f"{where}.protocol: must be one of {sorted(PROTOCOLS)}")
+    endpoints = provider.get("endpoints")
+    if model.get("protocol") in PROTOCOLS and isinstance(endpoints, dict) and model["protocol"] not in endpoints:
+        errors.append(f"{where}.protocol: no endpoint for it in providers.endpoints")
     check_variants(where, model, errors)
     protocol = model.get("protocol", provider.get("default_protocol"))
     effective = model.get("anthropic", provider.get("anthropic"))
@@ -115,6 +173,7 @@ def validate(data):
             errors.append(f"{where}.auth_type: must be one of {sorted(AUTH)}")
         if provider.get("default_protocol") not in PROTOCOLS:
             errors.append(f"{where}.default_protocol: must be one of {sorted(PROTOCOLS)}")
+        check_provider_fields(where, provider, errors)
         check_variants(where, provider, errors)
         models = provider.get("models")
         if not isinstance(models, dict) or not models:

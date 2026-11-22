@@ -1,10 +1,14 @@
 {
   "schema_version": 1,
-  "revision": 18,
+  "revision": 19,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
       "default_protocol": "openai-responses",
+      "title": "Codex (ChatGPT)",
+      "endpoints": {
+        "openai-responses": "https://chatgpt.com/backend-api/codex"
+      },
       "responses": {
         "lite": false
       },
@@ -108,6 +112,14 @@
     "opencode-go": {
       "auth_type": "api_key",
       "default_protocol": "openai-chat",
+      "title": "OpenCode Go",
+      "endpoints": {
+        "openai-chat": "https://opencode.ai/zen/go/v1",
+        "openai-responses-api": "https://opencode.ai/zen/go/v1",
+        "anthropic-messages": "https://opencode.ai/zen/go/v1",
+        "google-generate-content": "https://opencode.ai/inference/go/google/v1beta"
+      },
+      "session_header": "x-opencode-session",
       "openai_chat": {
         "include_stream_usage": true,
         "include_reasoning_content": true
@@ -492,6 +504,10 @@
     "openrouter": {
       "auth_type": "api_key",
       "default_protocol": "openai-chat",
+      "title": "OpenRouter",
+      "endpoints": {
+        "openai-chat": "https://openrouter.ai/api/v1"
+      },
       "models": {
         "google/gemini-nano-banana-2.1": {
           "tools": true,
@@ -511,6 +527,10 @@
     "deepseek": {
       "auth_type": "api_key",
       "default_protocol": "openai-chat",
+      "title": "DeepSeek",
+      "endpoints": {
+        "openai-chat": "https://api.deepseek.com"
+      },
       "openai_chat": {
         "include_stream_usage": true,
         "include_reasoning_content": true
@@ -539,6 +559,11 @@
     "commandcode": {
       "auth_type": "api_key",
       "default_protocol": "openai-chat",
+      "title": "Command Code",
+      "endpoints": {
+        "openai-chat": "https://api.commandcode.ai/provider/v1",
+        "anthropic-messages": "https://api.commandcode.ai/provider/v1"
+      },
       "openai_chat": {
         "include_stream_usage": true,
         "include_reasoning_content": true
@@ -1464,6 +1489,11 @@
     "kie": {
       "auth_type": "api_key",
       "default_protocol": "openai-chat",
+      "title": "Kie.ai",
+      "endpoints": {
+        "openai-chat": "https://api.kie.ai/{model}-openai/v1",
+        "openai-responses-api": "https://api.kie.ai/openai/v1"
+      },
       "models": {
         "deepseek-v4-1-flash": {
           "tools": true,
@@ -1488,6 +1518,24 @@
             "high",
             "xhigh"
           ]
+        }
+      }
+    },
+    "google": {
+      "auth_type": "api_key",
+      "default_protocol": "google-generate-content",
+      "title": "Gemini",
+      "endpoints": {
+        "google-generate-content": "https://generativelanguage.googleapis.com/v1beta"
+      },
+      "models": {
+        "gemma-4-26b-a4b-it": {
+          "tools": true,
+          "reasoning": true
+        },
+        "gemma-4-31b-it": {
+          "tools": true,
+          "reasoning": true
         }
       }
     }
