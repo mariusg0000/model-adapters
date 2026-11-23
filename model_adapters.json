@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 21,
+  "revision": 22,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -334,6 +334,10 @@
           ]
         },
         "longcat-2.0": {
+          "tools": true,
+          "reasoning": true
+        },
+        "longcat-2.5": {
           "tools": true,
           "reasoning": true
         },
