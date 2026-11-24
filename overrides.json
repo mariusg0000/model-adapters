@@ -155,6 +155,21 @@
           "reasoning": true,
           "reasoning_levels": ["low", "medium", "high"]
         },
+        "google/gemini-4-neon": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high"]
+        },
+        "gpt-6.2-astra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max"]
+        },
+        "gpt-6.2-sol": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "xhigh", "max"]
+        },
         "inclusionai/ling-3.1-flash-1019": {
           "tools": true,
           "reasoning": true,
@@ -170,10 +185,20 @@
           "reasoning": true,
           "reasoning_levels": ["low", "medium", "high"]
         },
+        "tencent/hy4": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["high"]
+        },
         "tencent/hy4-flash": {
           "tools": true,
           "reasoning": true,
           "reasoning_levels": ["high"]
+        },
+        "thinkingmachines/inkling-2-mini": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": ["low", "medium", "high", "max"]
         },
         "thinkingmachines/inkling-2-small:free": {
           "tools": true,

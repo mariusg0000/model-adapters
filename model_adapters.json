@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": 22,
+  "revision": 23,
   "providers": {
     "openai-chatgpt-oauth": {
       "auth_type": "oauth",
@@ -275,6 +275,10 @@
             "xhigh"
           ],
           "protocol": "openai-responses-api"
+        },
+        "hungerg-free": {
+          "tools": true,
+          "reasoning": true
         },
         "hy3": {
           "tools": true,
@@ -970,6 +974,15 @@
             "high"
           ]
         },
+        "google/gemini-4-neon": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
         "gpt-5.3-codex": {
           "tools": true,
           "reasoning": true,
@@ -1088,6 +1101,28 @@
           ]
         },
         "gpt-6.1-terra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6.2-astra": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        "gpt-6.2-sol": {
           "tools": true,
           "reasoning": true,
           "reasoning_levels": [
@@ -1352,6 +1387,13 @@
             "high"
           ]
         },
+        "tencent/hy4": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "high"
+          ]
+        },
         "tencent/hy4-flash": {
           "tools": true,
           "reasoning": true,
@@ -1367,6 +1409,16 @@
           ]
         },
         "thinkingmachines/inkling": {
+          "tools": true,
+          "reasoning": true,
+          "reasoning_levels": [
+            "low",
+            "medium",
+            "high",
+            "max"
+          ]
+        },
+        "thinkingmachines/inkling-2-mini": {
           "tools": true,
           "reasoning": true,
           "reasoning_levels": [
